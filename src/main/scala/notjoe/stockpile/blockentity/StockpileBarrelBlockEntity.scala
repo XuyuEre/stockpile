@@ -27,10 +27,11 @@ object StockpileBarrelBlockEntity {
   val DoubleClickPeriodMs = 500
 }
 
-class StockpileBarrelBlockEntity extends BlockEntity(StockpileBarrelBlockEntity.Type)
-  with AutoPersistence
-  with ClientSerializable
-  with SidedInventory {
+class StockpileBarrelBlockEntity
+  extends BlockEntity(StockpileBarrelBlockEntity.Type)
+    with AutoPersistence
+    with ClientSerializable
+    with SidedInventory {
 
   @Persistent var inventory = new MassItemInventory(onChanged = () => markDirty())
 
@@ -150,6 +151,7 @@ class StockpileBarrelBlockEntity extends BlockEntity(StockpileBarrelBlockEntity.
       loadPersistentDataFromTag(compoundTag.getCompound("PersistentData"))
     }
   }
+
   override def toClientTag(compoundTag: CompoundTag): CompoundTag = {
     compoundTag.put("PersistentData", persistentDataToTag())
     compoundTag

@@ -40,7 +40,6 @@ public abstract class AnvilContainerMixin extends Container {
         super(__);
     }
 
-
     @Inject(method = "method_7628()V", at = @At("RETURN"))
     private void method_7628(CallbackInfo ci) {
         ItemStack input = inventory.getInvStack(0);

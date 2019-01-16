@@ -17,7 +17,7 @@ object MassItemInventory {
 /**
   * An Inventory implementation which stores an arbitrary amount of a single ItemStack.
   *
-  * @param _stackType              ItemStack type stored, or EMPTY if none is defined.
+  * @param _stackType             ItemStack type stored, or EMPTY if none is defined.
   * @param amountStored           Amount of the ItemStack currently stored (individual items, not stacks).
   * @param maxStacks              The maximum number of *stacks* that this MassItemInventory can hold. This is affected
   *                               by the maximum stack size of the current _stackType.
@@ -28,11 +28,13 @@ class MassItemInventory(@PersistentField private var _stackType: ItemStack = Ite
                         @PersistentField var amountStored: Int = 0,
                         @PersistentField var maxStacks: Int = MassItemInventory.DefaultCapacityStacks,
                         @PersistentField var allowNewStackWhenEmpty: Boolean = true,
+                        @PersistentField var voidItemsPastMaxCapacity: Boolean = false,
                         val onChanged: () => Unit = () => {}) extends SidedInventory {
 
   def stackType: ItemStack = _stackType
 
   def stackSize: Int = _stackType.getMaxAmount
+
   def availableSpace: Int = (stackSize * maxStacks) - amountStored
 
   /**
@@ -46,7 +48,11 @@ class MassItemInventory(@PersistentField private var _stackType: ItemStack = Ite
       itemStack
     } else {
       val insertableAmount = Math.min(itemStack.getAmount, availableSpace)
-      val remainingAmount = itemStack.getAmount - insertableAmount
+      val remainingAmount = if (voidItemsPastMaxCapacity) {
+        0
+      } else {
+        itemStack.getAmount - insertableAmount
+      }
 
       setInvStack(MassItemInventory.InputSlotIndex, itemStack.withAmount(insertableAmount))
 
