@@ -18,6 +18,8 @@ if (!isRelease) {
     def ciBuildNumber = System.getenv("CIRCLE_BUILD_NUM") ?: 0
     def currentBranch = grgit.branch.current().name ?: "unknown"
     version += "-$currentBranch.$ciBuildNumber"
+} else {
+    println("The release property is set, so Stockpile is being built without a development tag!")
 }
 
 version += "+$mcVersion"
