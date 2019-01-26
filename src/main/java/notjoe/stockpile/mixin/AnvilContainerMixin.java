@@ -1,10 +1,10 @@
 package notjoe.stockpile.mixin;
 
 import net.minecraft.block.Block;
-import net.minecraft.class_3915;
 import net.minecraft.container.AnvilContainer;
 import net.minecraft.container.Container;
 import net.minecraft.container.ContainerType;
+import net.minecraft.container.Property;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -37,7 +37,7 @@ public abstract class AnvilContainerMixin extends Container {
 
     @Shadow
     @Final
-    private class_3915 pos;
+    private Property pos;
 
     protected AnvilContainerMixin(@Nullable ContainerType<?> containerType_1, int int_1) {
         super(containerType_1, int_1);
@@ -48,7 +48,7 @@ public abstract class AnvilContainerMixin extends Container {
         ItemStack input = inventory.getInvStack(0);
         ItemStack modifier = inventory.getInvStack(1);
 
-        if (!input.getItem().equals(BARREL.getItem())) {
+        if (!input.getItem().equals(BARREL.getItem()) || input.getAmount() != 1) {
             return;
         }
 
@@ -72,7 +72,7 @@ public abstract class AnvilContainerMixin extends Container {
         upgradedBarrel.setChildTag(StockpileBarrelBlock.StoredTileTagName(), barrelInfo.persistentDataToTag());
 
         result.setInvStack(0, upgradedBarrel);
-        pos.method_17404((int) (XP_REQUIRED_PER_STACK * stacksAddedByModifier));
+        pos.set((int) (XP_REQUIRED_PER_STACK * stacksAddedByModifier));
         sendContentUpdates();
     }
 
