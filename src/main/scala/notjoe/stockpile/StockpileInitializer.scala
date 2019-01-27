@@ -8,8 +8,8 @@ import net.minecraft.item.block.BlockItem
 import net.minecraft.item.{Item, ItemGroup, ItemStack}
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
-import notjoe.stockpile.block.{StockpileBarrelBlock, TrashCanBlock}
-import notjoe.stockpile.blockentity.{StockpileBarrelBlockEntity, TrashCanBlockEntity}
+import notjoe.stockpile.block.{InputBarrelBlock, StockpileBarrelBlock, TrashCanBlock}
+import notjoe.stockpile.blockentity.{InputBarrelBlockEntity, StockpileBarrelBlockEntity, TrashCanBlockEntity}
 
 object StockpileInitializer extends ModInitializer {
 
@@ -18,11 +18,13 @@ object StockpileInitializer extends ModInitializer {
 
   private implicit val Blocks: Map[String, Block] = Map(
     "barrel" -> StockpileBarrelBlock,
+    "input_barrel" -> InputBarrelBlock,
     "trash_can" -> TrashCanBlock
   )
 
   private implicit val BlockEntityTypes: Map[String, BlockEntityType[_ <: BlockEntity]] = Map(
     "barrel" -> StockpileBarrelBlockEntity.Type,
+    "input_barrel" -> InputBarrelBlockEntity.Type,
     "trash_can" -> TrashCanBlockEntity.Type
   )
 

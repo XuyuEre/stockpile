@@ -8,5 +8,13 @@
   "block.stockpile.barrel": "Barrel",
   "block.stockpile.trash_can": "Trash Can",
   "block.stockpile.trash_can.description": "Destroys thrown items! Right-click to open/close",
+  "block.stockpile.void_barrel": "Void Barrel",
+  "block.stockpile.void_barrel.description": "Destroys items inserted past max capacity",
+  "block.stockpile.input_barrel": "Input Barrel",
+  "block.stockpile.input_barrel.description": "Allows inserting to a bank of contiguous barrels",
+  "block.stockpile.output_barrel": "Output Barrel",
+  "block.stockpile.output_barrel.description": "Allows extracting from a bank of contiguous barrels",
+  "block.stockpile.barrel_connector": "Barrel Connector",
+  "block.stockpile.barrel_connector.description": "Connects barrels so they are considered contiguous",
   "itemGroup.stockpile.all": "Stockpile"
 }
