@@ -5,8 +5,11 @@
   "stockpile.barrel.capacity": "Holds up to %s stacks",
   "stockpile.barrel.just_locked": "Locked: this barrel will only accept the current item, even when empty.",
   "stockpile.barrel.just_unlocked": "Unlocked: this barrel will accept any item when empty.",
+  "stockpile.magic_lectern.needs_structure": "Two levels of 9 bookshelves within a 2-block radius are needed.",
   "block.stockpile.barrel": "Barrel",
   "block.stockpile.trash_can": "Trash Can",
   "block.stockpile.trash_can.description": "Destroys thrown items! Right-click to open/close",
+  "block.stockpile.magic_lectern": "Magical Lectern",
+  "block.stockpile.magic_lectern.description": "Stores and combines enchanted books",
   "itemGroup.stockpile.all": "Stockpile"
 }

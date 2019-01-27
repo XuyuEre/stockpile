@@ -8,8 +8,8 @@ import net.minecraft.item.block.BlockItem
 import net.minecraft.item.{Item, ItemGroup, ItemStack}
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
-import notjoe.stockpile.block.{StockpileBarrelBlock, TrashCanBlock}
-import notjoe.stockpile.blockentity.{StockpileBarrelBlockEntity, TrashCanBlockEntity}
+import notjoe.stockpile.block.{MagicLecternBlock, StockpileBarrelBlock, TrashCanBlock}
+import notjoe.stockpile.blockentity.{MagicLecternBlockEntity, StockpileBarrelBlockEntity, TrashCanBlockEntity}
 
 object StockpileInitializer extends ModInitializer {
 
@@ -18,12 +18,14 @@ object StockpileInitializer extends ModInitializer {
 
   private implicit val Blocks: Map[String, Block] = Map(
     "barrel" -> StockpileBarrelBlock,
-    "trash_can" -> TrashCanBlock
+    "trash_can" -> TrashCanBlock,
+    "magic_lectern" -> MagicLecternBlock
   )
 
   private implicit val BlockEntityTypes: Map[String, BlockEntityType[_ <: BlockEntity]] = Map(
     "barrel" -> StockpileBarrelBlockEntity.Type,
-    "trash_can" -> TrashCanBlockEntity.Type
+    "trash_can" -> TrashCanBlockEntity.Type,
+    "magic_lectern" -> MagicLecternBlockEntity.Type,
   )
 
   private def registerAll[T](registryType: Registry[T])(implicit contents: Map[String, T]): Unit = {
