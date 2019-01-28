@@ -6,9 +6,12 @@ import notjoe.stockpile.blockentity.StockpileBarrelBlockEntity
 import notjoe.stockpile.inventory.MassItemInventory
 
 object BarrelGraphOperations {
-  def findAllBarrelsInBank(world: BlockView, source: BlockPos, visited: Set[BlockPos] = Set()): Stream[MassItemInventory] = {
+  def findAllBarrelsInBank(world: BlockView,
+                           source: BlockPos,
+                           visited: Set[BlockPos] = Set()): Stream[MassItemInventory] = {
     val neighbors = Direction.values()
       .map(source.offset)
+      .filterNot(visited.contains)
       .filter(world.getBlockEntity(_) != null)
       .filter(world.getBlockEntity(_).isInstanceOf[StockpileBarrelBlockEntity])
 

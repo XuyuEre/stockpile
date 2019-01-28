@@ -23,7 +23,7 @@ class InputBarrelBlockEntity extends BlockEntity(InputBarrelBlockEntity.Type) wi
 
   override def getInvSize: Int = 1
 
-  override def isInvEmpty: Boolean = false
+  override def isInvEmpty: Boolean = findAllBarrelsInBank(world, pos).forall(_.isInvEmpty)
 
   override def getInvStack(i: Int): ItemStack = ItemStack.EMPTY
 
