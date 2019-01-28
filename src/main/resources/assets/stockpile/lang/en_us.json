@@ -11,10 +11,10 @@
   "block.stockpile.void_barrel": "Void Barrel",
   "block.stockpile.void_barrel.description": "Destroys items inserted past max capacity",
   "block.stockpile.input_barrel": "Input Barrel",
-  "block.stockpile.input_barrel.description": "Allows inserting to a bank of contiguous barrels",
+  "block.stockpile.input_barrel.description": "Inserts to a bank of barrels",
   "block.stockpile.output_barrel": "Output Barrel",
-  "block.stockpile.output_barrel.description": "Allows extracting from a bank of contiguous barrels",
-  "block.stockpile.barrel_connector": "Barrel Connector",
-  "block.stockpile.barrel_connector.description": "Connects barrels so they are considered contiguous",
+  "block.stockpile.output_barrel.description": "Extracts from a bank of barrels",
+  "block.stockpile.connector": "Barrel Connector",
+  "block.stockpile.connector.description": "Connects non-adjacent barrels",
   "itemGroup.stockpile.all": "Stockpile"
 }

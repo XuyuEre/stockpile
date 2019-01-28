@@ -8,7 +8,7 @@ import net.minecraft.item.block.BlockItem
 import net.minecraft.item.{Item, ItemGroup, ItemStack}
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
-import notjoe.stockpile.block.{MetaBarrel, StockpileBarrelBlock, TrashCanBlock}
+import notjoe.stockpile.block.{ConnectorBlock, MetaBarrel, StockpileBarrelBlock, TrashCanBlock}
 import notjoe.stockpile.blockentity.{InputBarrelBlockEntity, OutputBarrelBlockEntity, StockpileBarrelBlockEntity, TrashCanBlockEntity}
 
 object StockpileInitializer extends ModInitializer {
@@ -20,6 +20,7 @@ object StockpileInitializer extends ModInitializer {
     "barrel" -> StockpileBarrelBlock,
     "input_barrel" -> new MetaBarrel(() => new InputBarrelBlockEntity),
     "output_barrel" -> new MetaBarrel(() => new OutputBarrelBlockEntity),
+    "connector" -> ConnectorBlock,
     "trash_can" -> TrashCanBlock
   )
 
