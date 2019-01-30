@@ -41,7 +41,5 @@ object StockpileInitializer extends ModInitializer {
     registerAll(Registry.BLOCK)
     registerAll(Registry.BLOCK_ENTITY)
     registerAll(Registry.ITEM)(Blocks.mapValues(new BlockItem(_, new Item.Settings().itemGroup(ItemGroup))))
-
-    StockpileTags.initializeAll()
   }
 }

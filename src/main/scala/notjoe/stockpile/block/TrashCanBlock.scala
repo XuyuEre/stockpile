@@ -46,7 +46,9 @@ object TrashCanBlock extends BlockWithEntity(FabricBlockSettings.copy(Blocks.PIS
 
   override def isSimpleFullBlock(state: BlockState, view: BlockView, pos: BlockPos): Boolean = false
 
-  override def getOutlineShape(blockState_1: BlockState, blockView_1: BlockView, blockPos_1: BlockPos, verticalEntityPosition_1: VerticalEntityPosition): VoxelShape = {
+  override def getOutlineShape(state: BlockState,
+                               view: BlockView,
+                               pos: BlockPos,
+                               entityPosition: VerticalEntityPosition): VoxelShape =
     Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 13.0, 14.0)
-  }
 }

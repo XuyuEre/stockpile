@@ -14,6 +14,8 @@ object StockpileProperties {
     final val Up = BooleanProperty.create("up")
     final val Down = BooleanProperty.create("down")
 
+    final val All = Array(North, South, East, West, Up, Down)
+
     def propertyForDirection(d: Direction): BooleanProperty = d match {
       case Direction.NORTH => North
       case Direction.SOUTH => South
