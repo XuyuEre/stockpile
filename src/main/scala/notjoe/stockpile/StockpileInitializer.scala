@@ -14,6 +14,7 @@ import notjoe.stockpile.block.{
   TrashCanBlock
 }
 import notjoe.stockpile.blockentity.{
+  GraveBlockEntity,
   StockpileBarrelBlockEntity,
   TrashCanBlockEntity
 }
@@ -33,7 +34,8 @@ object StockpileInitializer extends ModInitializer {
   private implicit val BlockEntityTypes
     : Map[String, BlockEntityType[_ <: BlockEntity]] = Map(
     "barrel" -> StockpileBarrelBlockEntity.Type,
-    "trash_can" -> TrashCanBlockEntity.Type
+    "trash_can" -> TrashCanBlockEntity.Type,
+    "grave" -> GraveBlockEntity.Type
   )
 
   private def registerAll[T](registryType: Registry[T])(
