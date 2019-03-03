@@ -28,7 +28,8 @@ import scala.collection.JavaConverters._
 
 object StockpileBarrelBlock
     extends BlockWithEntity(FabricBlockSettings.copy(Blocks.CHEST).build())
-    with FacingDirection {
+    with FacingDirection
+    with BlockItemProvider {
 
   val StoredTileTagName = "barrelData"
   val ContentsTextStyle: Style = new Style().setColor(TextFormat.DARK_GRAY)

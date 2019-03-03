@@ -4,11 +4,15 @@ import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.block.Block
 import net.minecraft.block.entity.{BlockEntity, BlockEntityType}
-import net.minecraft.item.block.BlockItem
-import net.minecraft.item.{Item, ItemGroup, ItemStack}
+import net.minecraft.item.{ItemGroup, ItemStack}
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
-import notjoe.stockpile.block.{StockpileBarrelBlock, TrashCanBlock}
+import notjoe.stockpile.block.{
+  BlockItemProvider,
+  GraveBlock,
+  StockpileBarrelBlock,
+  TrashCanBlock
+}
 import notjoe.stockpile.blockentity.{
   StockpileBarrelBlockEntity,
   TrashCanBlockEntity
@@ -22,7 +26,8 @@ object StockpileInitializer extends ModInitializer {
 
   private implicit val Blocks: Map[String, Block] = Map(
     "barrel" -> StockpileBarrelBlock,
-    "trash_can" -> TrashCanBlock
+    "trash_can" -> TrashCanBlock,
+    "grave" -> GraveBlock
   )
 
   private implicit val BlockEntityTypes
@@ -42,8 +47,9 @@ object StockpileInitializer extends ModInitializer {
     registerAll(Registry.BLOCK)
     registerAll(Registry.BLOCK_ENTITY)
     registerAll(Registry.ITEM)(
-      Blocks.mapValues(
-        new BlockItem(_, new Item.Settings().itemGroup(ItemGroup))))
+      Blocks
+        .filter { case (_, block) => block.isInstanceOf[BlockItemProvider] }
+        .mapValues(_.asInstanceOf[BlockItemProvider].createItemBlock()))
 
     StockpileTags.initializeAll()
   }

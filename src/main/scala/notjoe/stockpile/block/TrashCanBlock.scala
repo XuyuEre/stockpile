@@ -18,7 +18,8 @@ import notjoe.stockpile.blockentity.TrashCanBlockEntity
 
 object TrashCanBlock
     extends BlockWithEntity(FabricBlockSettings.copy(Blocks.PISTON).build())
-    with Description {
+    with Description
+    with BlockItemProvider {
   override def createBlockEntity(blockView: BlockView): BlockEntity =
     new TrashCanBlockEntity()
 

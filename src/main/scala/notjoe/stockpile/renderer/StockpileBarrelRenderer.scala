@@ -43,41 +43,35 @@ object StockpileBarrelRenderer
                       x: Double,
                       y: Double,
                       z: Double): Unit = orientation match {
-    case Direction.NORTH => {
+    case Direction.NORTH =>
       GlStateManager.translated(x + 0.75,
                                 y + 0.75,
                                 z + CofhTransformOffset * 145)
-    }
-    case Direction.SOUTH => {
+    case Direction.SOUTH =>
       GlStateManager.translated(x + 0.25,
                                 y + 0.75,
                                 z + 1 - CofhTransformOffset * 145)
       GlStateManager.rotated(180f, 0f, 1f, 0f)
-    }
-    case Direction.WEST => {
+    case Direction.WEST =>
       GlStateManager.translated(x + CofhTransformOffset * 145,
                                 y + 0.75,
                                 z + 0.25)
       GlStateManager.rotated(90f, 0f, 1f, 0f)
-    }
-    case Direction.EAST => {
+    case Direction.EAST =>
       GlStateManager.translated(x + 1 - CofhTransformOffset * 145,
                                 y + 0.75,
                                 z + 0.75)
       GlStateManager.rotated(-90f, 0f, 1f, 0f)
-    }
-    case Direction.UP => {
+    case Direction.UP =>
       GlStateManager.translated(x + 0.75,
                                 y + 1 - CofhTransformOffset * 145,
                                 z + 0.75)
       GlStateManager.rotated(90f, 1f, 0f, 0f)
-    }
-    case Direction.DOWN => {
+    case Direction.DOWN =>
       GlStateManager.translated(x + 0.75,
                                 y + CofhTransformOffset * 145,
                                 z + 0.25)
       GlStateManager.rotated(-90f, 1f, 0f, 0f)
-    }
   }
 
   def renderFillBar(inventory: MassItemInventory,

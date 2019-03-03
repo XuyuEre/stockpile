@@ -3,7 +3,8 @@
   "package": "notjoe.stockpile.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "AnvilContainerMixin"
+    "AnvilContainerMixin",
+    "ServerPlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
