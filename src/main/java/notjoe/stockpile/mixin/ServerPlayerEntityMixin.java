@@ -20,12 +20,12 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
     }
 
     @Inject(method = "onDeath(Lnet/minecraft/entity/damage/DamageSource;)V", at = @At("HEAD"))
-    public void onDeathHead(DamageSource damageSource, CallbackInfo ci) {
+    public void onDeath(DamageSource damageSource, CallbackInfo ci) {
         if (world.getGameRules().getBoolean("keepInventory")) {
             return;
         }
 
-        GraveBlockEntity$.MODULE$.createGrave(world, inventory, getPos());
+        GraveBlockEntity$.MODULE$.createGrave(world, this, getPos());
         inventory.clear();
     }
 
