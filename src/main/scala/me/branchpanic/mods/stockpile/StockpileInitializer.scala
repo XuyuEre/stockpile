@@ -2,6 +2,7 @@ package me.branchpanic.mods.stockpile
 
 import me.branchpanic.mods.stockpile.block.{StockpileBarrelBlock, TrashCanBlock}
 import me.branchpanic.mods.stockpile.blockentity.{StockpileBarrelBlockEntity, TrashCanBlockEntity}
+import me.branchpanic.mods.stockpile.registry.BarrelUpgradeDefinition
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.block.Block
@@ -9,11 +10,13 @@ import net.minecraft.block.entity.{BlockEntity, BlockEntityType}
 import net.minecraft.item.block.BlockItem
 import net.minecraft.item.{Item, ItemGroup, ItemStack}
 import net.minecraft.util.Identifier
-import net.minecraft.util.registry.Registry
+import net.minecraft.util.registry.{DefaultedRegistry, MutableRegistry, Registry}
 
 object StockpileInitializer extends ModInitializer {
   val ITEM_GROUP: ItemGroup =
     FabricItemGroupBuilder.build(new Identifier("stockpile", "all"), () => new ItemStack(StockpileBarrelBlock))
+
+  val BARREL_UPGRADES: MutableRegistry[BarrelUpgradeDefinition] = new DefaultedRegistry[BarrelUpgradeDefinition]
 
   private val BLOCKS: Map[String, Block] = Map(
     "barrel" -> StockpileBarrelBlock,
@@ -29,6 +32,8 @@ object StockpileInitializer extends ModInitializer {
     registerAll(Registry.BLOCK, BLOCKS)
     registerAll(Registry.BLOCK_ENTITY, BLOCK_ENTITY_TYPES)
     registerAll(Registry.ITEM, BLOCKS.mapValues(new BlockItem(_, new Item.Settings().itemGroup(ITEM_GROUP))))
+
+    Registry.REGISTRIES.add(new Identifier("stockpile", "barrel_upgrades"), BARREL_UPGRADES)
 
     StockpileTags.initializeAll()
   }
