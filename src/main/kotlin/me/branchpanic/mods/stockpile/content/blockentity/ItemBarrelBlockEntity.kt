@@ -5,6 +5,7 @@ import me.branchpanic.mods.stockpile.api.barrel.BarrelUpgrade
 import me.branchpanic.mods.stockpile.api.barrel.BarrelUpgrades
 import me.branchpanic.mods.stockpile.api.inventory.MassItemInventory
 import me.branchpanic.mods.stockpile.api.storage.MassItemStorage
+import me.branchpanic.mods.stockpile.api.storage.MassStorageProvider
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
@@ -27,6 +28,7 @@ class ItemBarrelBlockEntity(
 ) :
     BlockEntity(TYPE),
     BlockEntityClientSerializable,
+    MassStorageProvider<ItemStack>,
     SidedInventory by invWrapper {
 
     constructor(tag: CompoundTag) : this() {
@@ -47,7 +49,8 @@ class ItemBarrelBlockEntity(
         val TYPE: BlockEntityType<ItemBarrelBlockEntity> = BlockEntityType({ ItemBarrelBlockEntity() }, null)
     }
 
-    val backingStorage get() = storage
+    override val backingStorage
+        get() = storage
 
     private var recentUsers: Map<UUID, Long> = mapOf()
 

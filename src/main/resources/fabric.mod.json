@@ -8,6 +8,9 @@
     "me.branchpanic.mods.stockpile.Stockpile",
     "me.branchpanic.mods.stockpile.StockpileClient"
   ],
+  "mixins": {
+    "client": ["mixins.client.json"]
+  },
   "languageAdapter": "net.fabricmc.language.kotlin.KotlinLanguageAdapter",
   "requires": {
     "fabric": "*",

@@ -2,6 +2,7 @@ package me.branchpanic.mods.stockpile
 
 import me.branchpanic.mods.stockpile.content.block.ItemBarrelBlock
 import me.branchpanic.mods.stockpile.content.blockentity.ItemBarrelBlockEntity
+import me.branchpanic.mods.stockpile.content.item.BarrelGogglesItem
 import net.fabricmc.api.ModInitializer
 import net.minecraft.block.Block
 import net.minecraft.block.entity.BlockEntity
@@ -24,7 +25,11 @@ object Stockpile : ModInitializer {
         id("item_barrel") to ItemBarrelBlockEntity.TYPE
     )
 
-    private fun id(path: String): Identifier = Identifier("stockpile", path)
+    private val ITEMS: Map<Identifier, Item> = mapOf(
+        id("barrel_goggles") to BarrelGogglesItem
+    )
+
+    internal fun id(path: String): Identifier = Identifier("stockpile", path)
 
     override fun onInitialize() {
         BLOCKS.forEach { id, block ->
@@ -34,6 +39,10 @@ object Stockpile : ModInitializer {
 
         BLOCK_ENTITIES.forEach { id, blockEntityType ->
             Registry.register(Registry.BLOCK_ENTITY, id, blockEntityType)
+        }
+
+        ITEMS.forEach { id, item ->
+            Registry.register(Registry.ITEM, id, item)
         }
     }
 }
